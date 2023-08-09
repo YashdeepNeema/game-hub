@@ -1,6 +1,7 @@
 import {
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -25,6 +26,9 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <>
+      <Heading fontSize="2xl" marginBottom={3}>
+        Genres
+      </Heading>
       <List>
         {isLoading &&
           skeleton.map((skel) => (
@@ -36,11 +40,14 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
           <ListItem key={genre.id} paddingY={"5px"}>
             <HStack>
               <Image
+                objectFit={"cover"}
                 boxSize={"32px"}
                 borderRadius={10}
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
+                whiteSpace={"normal"}
+                textAlign={"left"}
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre)}
                 variant={"link"}
